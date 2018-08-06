@@ -21,23 +21,23 @@ class AdDialog: DialogFragment() {
     val TAG = AdDialog::class.java.simpleName
     val baseUrl = "https://app.appsflyer.com/com.candyapp.appsflyer?pid=masterclass&c=publisherapps&af_adset=dlnow&af_click_lookback=1h"
     val impBaseUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=masterclass&c=publisherapps&af_adset=dlnow&af_viewthrough_lookback=1h"
-    val append = "&af_r=${URLEncoder.encode(BuildConfig.DOWNLOAD_URL, "UTF-8")}&advertising_id=${PublisherApp.gaid}"
+    val append = "&advertising_id=${PublisherApp.gaid}"
     val itemList = listOf(
             ClickItem(1,"Download the Candy Shopping App Now", null,
-                    targetUrl = "${baseUrl}&af_ad=General&af_adset_id=t1&af_siteid=ABC&af_cost_currency=USD&af_cost_value=1${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=General&af_adset_id=t1&af_siteid=ABC&af_cost_currency=USD&af_cost_value=1${append}"),
+                    targetUrl = "${baseUrl}&af_ad=General&af_adset_id=t1&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=10${append}",
+                    impressUrl = "${impBaseUrl}&af_ad=General&af_adset_id=t1&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=1${append}"),
             ClickItem(1, "Buy M&Ms in an App", null,
-                    targetUrl = "${baseUrl}&af_ad=MM&af_adset_id=t2&af_siteid=ABC&af_cost_currency=USD&af_cost_value=1${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=MM&af_adset_id=t2&af_siteid=ABC&af_cost_currency=USD&af_cost_value=1${append}"),
+                    targetUrl = "${baseUrl}&af_ad=MM&af_adset_id=t2&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=50${append}",
+                    impressUrl = "${impBaseUrl}&af_ad=MM&af_adset_id=t2&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=5${append}"),
             ClickItem(1, "Buy Skittles in an App", null,
-                    targetUrl = "${baseUrl}&af_ad=Skittles&af_adset_id=t3&af_siteid=ABC&af_cost_currency=USD&af_cost_value=1${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=Skittles&af_adset_id=t3&af_siteid=ABC&af_cost_currency=USD&af_cost_value=1${append}"),
+                    targetUrl = "${baseUrl}&af_ad=Skittles&af_adset_id=t3&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=60${append}",
+                    impressUrl = "${impBaseUrl}&af_ad=Skittles&af_adset_id=t3&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=6${append}"),
             ClickItem(1, null, R.mipmap.mm,
-                    targetUrl = "${baseUrl}&af_ad=MM&af_adset_id=iMM&af_siteid=ABC&af_cost_currency=USD&af_cost_value=2${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=MM&af_adset_id=iMM&af_siteid=ABC&af_cost_currency=USD&af_cost_value=2${append}"),
+                    targetUrl = "${baseUrl}&af_ad=MM&af_adset_id=iMM&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=7${append}",
+                    impressUrl = "${impBaseUrl}&af_ad=MM&af_adset_id=iMM&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=70${append}"),
             ClickItem(1, null, R.mipmap.skittles,
-                    targetUrl = "${baseUrl}&af_ad=Skittles&af_adset_id=iSK&af_siteid=ABC&af_cost_currency=USD&af_cost_value=2${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=Skittles&af_adset_id=iSK&af_siteid=ABC&af_cost_currency=USD&af_cost_value=2${append}")
+                    targetUrl = "${baseUrl}&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=8${append}",
+                    impressUrl = "${impBaseUrl}&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=80${append}")
     )
 
     private lateinit var ad: ClickItem
