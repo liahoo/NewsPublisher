@@ -21,7 +21,7 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
         if(recyclerAdapter.getItemViewType(position)==0) return false
         recyclerAdapter.get(position)?.targetUrl?.let {
             AlertDialog.Builder(this)
-                    .setMessage(it)
+                    .setMessage(it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
                     .setPositiveButton(android.R.string.ok) { dialog, _ ->
                         dialog.dismiss()
                     }
@@ -39,18 +39,6 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
         }
     }
 
-    fun onLongClicked(item: ClickItem): Boolean {
-        item.targetUrl?.let {
-            AlertDialog.Builder(this)
-                    .setMessage(it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
-                    .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create().show()
-        }
-        return true
-    }
-
     fun onClick(item: ClickItem) {
         item.targetUrl?.let {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
@@ -61,18 +49,17 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
 
     lateinit var newsList: List<ClickItem>
     private fun initItems(){
-        val baseUrl = "http://bit.do/es7Bt"
         newsList = listOf(
                 ClickItem(0, getString(R.string.article_text_1), R.mipmap.skittlesstill),
-                ClickItem(1, null, R.mipmap.mm, baseUrl + "?clickid={epoch-time-adid}"),
+                ClickItem(1, null, R.mipmap.mm, "http://bit.do/es7BM?clickid={epoch-time-adid}"),
                 ClickItem(0, getString(R.string.article_text_2), R.mipmap.salted_caramel),
-                ClickItem(1, "Buy Skittles in an App", null, baseUrl + "?clickid={epoch-time-adid}"),
+                ClickItem(1, "Buy Skittles in an App", null, "http://bit.do/es7BD?clickid={epoch-time-adid}"),
                 ClickItem(0, getString(R.string.article_text_3), R.mipmap.ruby_chocolate_barry_callebaut),
-                ClickItem(1, "Buy M&Ms in an App", null, baseUrl + "?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
+                ClickItem(1, "Buy M&Ms in an App", null, "http://bit.do/es7Bt?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
                 ClickItem(0, getString(R.string.article_text_4), R.mipmap.jelly_belly_beer),
-                ClickItem(1, "Download the Candy Shopping App Now", null, baseUrl + "?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
+                ClickItem(1, "Download the Candy Shopping App Now", null, "http://bit.do/es7Bn?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
                 ClickItem(0, getString(R.string.article_text_5), R.mipmap.pg_18_3d_printer),
-                ClickItem(1, null, R.mipmap.skittles, baseUrl + "?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
+                ClickItem(1, null, R.mipmap.skittles, "http://bit.do/es7Bm?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
         )
     }
     override fun onCreate(savedInstanceState: Bundle?) {
