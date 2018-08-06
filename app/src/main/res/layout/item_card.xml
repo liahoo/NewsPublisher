@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ddd">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentPadding="10dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="10dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:drawableBottom="@mipmap/skittlesstill"
+            tools:text="A theory claims all Skittles taste the same so we did a blind test - Are you really tasting the rainbow?"
+            android:drawablePadding="10sp"
+            android:textAllCaps="false"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textSize="28sp" />
+
+    </android.support.v7.widget.CardView>
+
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:id="@+id/cardAd"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:contentPadding="10dp"-->
+        <!--app:cardUseCompatPadding="true"-->
+        <!--app:cardCornerRadius="10dp">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textAd"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--tools:drawableBottom="@mipmap/skittles"-->
+            <!--tools:text="Download the Candy Shopping App Now"-->
+            <!--android:drawablePadding="10sp"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textAppearance="@android:style/TextAppearance.Material.Large"-->
+            <!--android:textColor="?android:attr/textColorLink"-->
+            <!--android:textSize="28sp" />-->
+
+    <!--</android.support.v7.widget.CardView>-->
+
+</LinearLayout>
