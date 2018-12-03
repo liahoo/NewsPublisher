@@ -19,25 +19,22 @@ import java.util.*
 
 class AdDialog: DialogFragment() {
     val TAG = AdDialog::class.java.simpleName
-    val baseUrl = "https://app.appsflyer.com/com.candyapp.appsflyer?pid=masterclass&c=publisherapps&af_adset=dlnow&af_click_lookback=1h"
-    val impBaseUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=masterclass&c=publisherapps&af_adset=dlnow&af_viewthrough_lookback=1h"
-    val append = "&advertising_id=${PublisherApp.gaid}"
     val itemList = listOf(
-            ClickItem(1,"Download the Candy Shopping App Now", null,
-                    targetUrl = "${baseUrl}&af_ad=General&af_adset_id=t1&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=10${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=General&af_adset_id=t1&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=1${append}"),
-            ClickItem(1, "Buy M&Ms in an App", null,
-                    targetUrl = "${baseUrl}&af_ad=MM&af_adset_id=t2&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=50${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=MM&af_adset_id=t2&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=5${append}"),
-            ClickItem(1, "Buy Skittles in an App", null,
-                    targetUrl = "${baseUrl}&af_ad=Skittles&af_adset_id=t3&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=60${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=Skittles&af_adset_id=t3&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=6${append}"),
             ClickItem(1, null, R.mipmap.mm,
-                    targetUrl = "${baseUrl}&af_ad=MM&af_adset_id=iMM&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=7${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=MM&af_adset_id=iMM&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=70${append}"),
+                    targetUrl = "http://bit.do/eCfwa?clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=MM&af_adset_id=iMM&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=22"),
+            ClickItem(1, "Buy Skittles in an App", null,
+                    targetUrl = "http://bit.do/eCfwd?clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=t3&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=15&af_fingerprint_attribution=false"),
+            ClickItem(1, "Buy M&Ms in an App", null,
+                    targetUrl = "http://bit.do/eCfwh?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=MM&af_adset_id=t2&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12"),
+            ClickItem(1,"Download the Candy Shopping App Now", null,
+                    targetUrl = "http://bit.do/eCfwj?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=General&af_adset_id=t1&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=21"),
             ClickItem(1, null, R.mipmap.skittles,
-                    targetUrl = "${baseUrl}&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=8${append}",
-                    impressUrl = "${impBaseUrl}&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-ABC&af_cost_currency=USD&af_cost_value=80${append}")
+                    targetUrl = "http://bit.do/eCfwm?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=29")
     )
 
     private lateinit var ad: ClickItem
@@ -50,7 +47,12 @@ class AdDialog: DialogFragment() {
         tvTitle?.let {
             it.setCompoundDrawablesWithIntrinsicBounds(0,0,0, ad.image ?: 0)
             it.text = ad.text
-            it.setOnClickListener { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(ad.targetUrl))) }
+            it.setOnClickListener {
+                ad.targetUrl?.replace("{epoch-time-adid}", (Date().time).toString() + "-" + PublisherApp.gaid)?.let {
+                    Log.i(TAG,"click on url: $it")
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
+                }
+            }
         }
         return v
     }
@@ -64,12 +66,14 @@ class AdDialog: DialogFragment() {
 
     private fun sendImpression() {
         Log.d(TAG, "[sendImpression]")
-        Log.i(TAG,"Request:\n ${ad.impressUrl}")
+        val url = ad.impressUrl?.replace("{epoch-time-adid}", (Date().time).toString() + "-" + PublisherApp.gaid)
+
+        Log.i(TAG,"Request:\n $url")
         val queue = Volley.newRequestQueue(activity)
-        val stringRequest = StringRequest(Request.Method.GET, ad.impressUrl,
+        val stringRequest = StringRequest(Request.Method.GET, url,
                 Response.Listener<String> { response ->
                     // Display the first 500 characters of the response string.
-                    Log.i(TAG,"Response: \n ${response}")
+                    Log.i(TAG,"Response: ${response}")
                 },
                 Response.ErrorListener { Log.i(TAG,"Response Error!!") })
         stringRequest.tag = ad.text
