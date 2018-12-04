@@ -1,5 +1,6 @@
 package com.appsflyer.support.publisher
 
+import android.app.AlertDialog
 import android.app.DialogFragment
 import android.content.Intent
 import android.net.Uri
@@ -21,10 +22,10 @@ class AdDialog: DialogFragment() {
     val TAG = AdDialog::class.java.simpleName
     val itemList = listOf(
             ClickItem(1, null, R.mipmap.mm,
-                    targetUrl = "http://bit.do/eCfwa?clickid={epoch-time-adid}",
+                    targetUrl = "http://bit.do/eCfwa?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
                     impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=MM&af_adset_id=iMM&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=22"),
             ClickItem(1, "Buy Skittles in an App", null,
-                    targetUrl = "http://bit.do/eCfwd?clickid={epoch-time-adid}",
+                    targetUrl = "http://bit.do/eCfwd?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
                     impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=t3&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=15&af_fingerprint_attribution=false"),
             ClickItem(1, "Buy M&Ms in an App", null,
                     targetUrl = "http://bit.do/eCfwh?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
@@ -52,6 +53,15 @@ class AdDialog: DialogFragment() {
                     Log.i(TAG,"click on url: $it")
                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
                 }
+            }
+            it.setOnLongClickListener {
+                AlertDialog.Builder(activity)
+                        .setMessage(ad.targetUrl?.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
+                        .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .create()
+                        .show(); true
             }
         }
         return v
