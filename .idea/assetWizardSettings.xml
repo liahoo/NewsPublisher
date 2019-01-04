@@ -13,7 +13,7 @@
                       <PersistentState>
                         <option name="values">
                           <map>
-                            <entry key="resourceDirectory" value="GamePublisher" />
+                            <entry key="resourceDirectory" value="NewsPublisher" />
                           </map>
                         </option>
                       </PersistentState>
@@ -107,7 +107,7 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="$USER_HOME$/Documents/3619144.png" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/Icon-news.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
