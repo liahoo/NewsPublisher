@@ -7,13 +7,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.text.format.DateFormat
-import android.text.format.DateUtils
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_news.*
-import java.net.URL
-import java.net.URLEncoder
 import java.util.*
 
 class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClickSupport.OnItemLongClickListener {
@@ -52,13 +48,13 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
         newsList = listOf(
                 ClickItem(0, getString(R.string.article_text_1), R.mipmap.skittlesstill),
                 ClickItem(1, null, R.mipmap.mm, "http://bit.do/es7BM?clickid={epoch-time-adid}"),
-                ClickItem(0, getString(R.string.article_text_2), R.mipmap.salted_caramel),
+                ClickItem(0, getString(R.string.article_text_2), R.mipmap.the_definitive_market_leader),
                 ClickItem(1, "Buy Skittles in an App", null, "http://bit.do/es7BD?clickid={epoch-time-adid}"),
-                ClickItem(0, getString(R.string.article_text_3), R.mipmap.ruby_chocolate_barry_callebaut),
+                ClickItem(0, getString(R.string.article_text_3), R.mipmap.kindness_add_up),
                 ClickItem(1, "Buy M&Ms in an App", null, "http://bit.do/es7Bt?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
-                ClickItem(0, getString(R.string.article_text_4), R.mipmap.jelly_belly_beer),
+                ClickItem(0, getString(R.string.article_text_4), R.mipmap.salted_caramel),
                 ClickItem(1, "Download the Candy Shopping App Now", null, "http://bit.do/es7Bn?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
-                ClickItem(0, getString(R.string.article_text_5), R.mipmap.pg_18_3d_printer),
+                ClickItem(0, getString(R.string.article_text_5), R.mipmap.tinder),
                 ClickItem(1, null, R.mipmap.skittles, "http://bit.do/es7Bm?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
         )
     }

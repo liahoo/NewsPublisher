@@ -4,13 +4,15 @@
     <string name="can_not_read_gaid">Oops, I can\'t read GAID from this device!</string>
     <string name="play_game">Play Game</string>
     <string name="game_over">Game Over</string>
-    <string name="title_news_activity">Candy News</string>
+    <string name="title_news_activity">World News</string>
     <string name="title_game_over_activity">Game Result</string>
-    <string name="title_play_game_activity">Candy Game</string>
+    <string name="title_play_game_activity">Useless Game</string>
     <string name="article_text_1">A theory claims all Skittles taste the same so we did a blind test - Are you really tasting the rainbow?</string>
-    <string name="article_text_2">Why you can’t stop eating salted caramel, according to science</string>
-    <string name="article_text_3">Scientists just invented a new flavour of chocolate</string>
-    <string name="article_text_4">Cheers! World\'s first beer-flavoured bean set for UK release</string>
-    <string name="article_text_5">Intricate, beautiful sugar cubes could be the key to getting 3D</string>
+    <string name="article_text_2">Mobile marketing analytics firm AppsFlyer surpasses $100 million in annual recurring revenue</string>
+    <string name="article_text_3">Do small acts of kindness add up?</string>
+    <string name="article_text_4">Why you can’t stop eating salted caramel, according to science</string>
+    <string name="article_text_5">Woman solves crime after matching with thief on Tinder</string>
+    <string name="article_text_6">Cheers! World\'s first beer-flavoured bean set for UK release</string>
+    <string name="article_text_7">Intricate, beautiful sugar cubes could be the key to getting 3D</string>
     <string name="close">Close</string>
 </resources>
