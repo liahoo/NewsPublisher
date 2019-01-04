@@ -17,15 +17,15 @@ android {
         NewsPublisher {
             dimension "App"
             applicationId "com.appsflyer.support.publisher.news"
-            versionCode 5
-            versionName "0.0.5"
+            versionCode 6
+            versionName "0.0.6"
             buildConfigField "String", "DOWNLOAD_URL", "\"https://novice-c3abd.firebaseapp.com/candyapp.apk\""
         }
         GamePublisher {
             dimension "App"
             applicationId "com.appsflyer.support.publisher.game"
-            versionCode 4
-            versionName "0.0.4"
+            versionCode 6
+            versionName "0.0.6"
             buildConfigField "String", "DOWNLOAD_URL", "\"https://novice-c3abd.firebaseapp.com/candyapp.apk\""
         }
     }

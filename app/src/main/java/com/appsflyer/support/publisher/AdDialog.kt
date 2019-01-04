@@ -55,13 +55,10 @@ class AdDialog: DialogFragment() {
                 }
             }
             it.setOnLongClickListener {
-                AlertDialog.Builder(activity)
-                        .setMessage(ad.targetUrl?.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
-                        .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        .create()
-                        .show(); true
+                ad.targetUrl?.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid)?.let {
+                    DialogFactory.showLinkText(activity, it)
+                    true
+                } ?: false
             }
         }
         return v

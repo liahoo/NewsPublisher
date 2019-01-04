@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_news.*
 import java.util.*
@@ -16,12 +17,7 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
     override fun onItemLongClicked(recyclerView: RecyclerView, position: Int, v: View): Boolean {
         if(recyclerAdapter.getItemViewType(position)==0) return false
         recyclerAdapter.get(position)?.targetUrl?.let {
-            AlertDialog.Builder(this)
-                    .setMessage(it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
-                    .setPositiveButton(android.R.string.ok) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .create().show()
+            DialogFactory.showLinkText(this@NewsActivity, it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
         }
         return true
     }
