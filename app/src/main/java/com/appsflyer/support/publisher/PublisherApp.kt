@@ -5,6 +5,9 @@ import android.content.Context
 import android.util.Log
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import java.util.concurrent.Executors
+import android.content.pm.PackageManager
+
+
 
 
 class PublisherApp: Application() {
@@ -12,6 +15,16 @@ class PublisherApp: Application() {
         val TAG = PublisherApp::class.java.simpleName
         var gaid: String? = null
         var isLimitAdTrackingEnabled: Boolean = false
+        fun isCandyAppInstalled(context: Context) = isPackageInstalled("com.candyapp.appsflyer", context.packageManager)
+        fun isPackageInstalled(packageName: String, packageManager: PackageManager): Boolean {
+            var found = true
+            try {
+                packageManager.getPackageInfo(packageName, 0)
+            } catch (e: PackageManager.NameNotFoundException) {
+                found = false
+            }
+            return found
+        }
     }
     override fun onCreate() {
         super.onCreate()

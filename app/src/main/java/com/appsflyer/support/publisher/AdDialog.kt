@@ -20,26 +20,35 @@ import java.util.*
 
 class AdDialog: DialogFragment() {
     val TAG = AdDialog::class.java.simpleName
-    val itemList = listOf(
+    val itemListNew = listOf(
             ClickItem(1, null, R.mipmap.mm,
                     targetUrl = "http://bit.do/eCfwa?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
-                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=MM&af_adset_id=iMM&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=22"),
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=MM&af_adset_id=iMM&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=22&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
             ClickItem(1, "Buy Skittles in an App", null,
                     targetUrl = "http://bit.do/eCfwd?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
-                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=t3&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=15&af_fingerprint_attribution=false"),
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=t3&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=15&af_fingerprint_attribution=false&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
             ClickItem(1, "Buy M&Ms in an App", null,
                     targetUrl = "http://bit.do/eCfwh?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
-                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=MM&af_adset_id=t2&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12"),
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=MM&af_adset_id=t2&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
             ClickItem(1,"Download the Candy Shopping App Now", null,
                     targetUrl = "http://bit.do/eCfwj?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
-                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=General&af_adset_id=t1&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=21"),
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=General&af_adset_id=t1&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=21&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
             ClickItem(1, null, R.mipmap.skittles,
                     targetUrl = "http://bit.do/eCfwm?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
-                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=29")
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=29&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
     )
 
+    val itemListRetargeting = listOf(
+            ClickItem(1, null, R.mipmap.mm_discount,
+                    targetUrl = "http://bit.do/eCfwa?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=MM&af_adset_id=iMM-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
+            ClickItem(1, null, R.mipmap.skittles_discount,
+                    targetUrl = "http://bit.do/eCfwa?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=Skittles&af_adset_id=iSK-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=19&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
+    )
     private lateinit var ad: ClickItem
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        val itemList = if(PublisherApp.isCandyAppInstalled(activity)) itemListRetargeting else itemListNew
         val itemIndex = Random().nextInt(itemList.size)
         Log.d(TAG, "[onCreateView] item index: ${itemIndex}")
         ad =  itemList.get(itemIndex)
@@ -86,4 +95,6 @@ class AdDialog: DialogFragment() {
         stringRequest.tag = ad.text
         queue.add(stringRequest)
     }
+
+
 }
