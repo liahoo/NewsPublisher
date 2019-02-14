@@ -35,16 +35,22 @@ class AdDialog: DialogFragment() {
                     impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=General&af_adset_id=t1&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=21&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
             ClickItem(1, null, R.mipmap.skittles,
                     targetUrl = "http://bit.do/eCfwm?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
-                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=29&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=dlnow&af_ad=Skittles&af_adset_id=iSK&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=29&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
+            ClickItem(1, null, R.mipmap.mm_discount,
+                    targetUrl = "https://candyapp.onelink.me/4IvE?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=MM&af_adset_id=iMM-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12&af_dp=candyapp%3A%2F%2FMM&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=MM&af_adset_id=iMM-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
+            ClickItem(1, null, R.mipmap.skittles_discount,
+                    targetUrl = "https://candyapp.onelink.me/4IvE?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=Skittles&af_adset_id=iSK-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=19&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=Skittles&af_adset_id=iSK-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=19&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
     )
 
     val itemListRetargeting = listOf(
             ClickItem(1, null, R.mipmap.mm_discount,
-                    targetUrl = "http://bit.do/eCfwa?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
-                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=MM&af_adset_id=iMM-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
+                    targetUrl = "https://candyapp.onelink.me/4IvE?pid=ypartner_int&c=publisherapps&af_adset=deeplink&af_ad=MM&af_adset_id=iMM-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12&af_dp=candyapp%3A%2F%2FMM&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deeplink&af_ad=MM&af_adset_id=iMM-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=12&is_retargeting=true&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}"),
             ClickItem(1, null, R.mipmap.skittles_discount,
-                    targetUrl = "http://bit.do/eCfwa?advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
-                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=Skittles&af_adset_id=iSK-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=19&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
+                    targetUrl = "https://app.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deeplink&af_ad=Skittles&af_adset_id=iSK-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=19&is_retargeting=true&af_dp=candyapp%3A%2F%2FSkittles&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}",
+                    impressUrl = "https://impression.appsflyer.com/com.candyapp.appsflyer?pid=ypartner_int&c=publisherapps&af_adset=deferreddeeplink&af_ad=Skittles&af_adset_id=iSK-ddl&af_siteid=CG-123&af_cost_currency=USD&af_cost_value=19&is_retargeting=true&advertising_id=${PublisherApp.gaid}&clickid={epoch-time-adid}")
     )
     private lateinit var ad: ClickItem
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {

@@ -24,8 +24,8 @@ android {
         GamePublisher {
             dimension "App"
             applicationId "com.appsflyer.support.publisher.game"
-            versionCode 6
-            versionName "0.0.6"
+            versionCode 7
+            versionName "0.0.7"
             buildConfigField "String", "DOWNLOAD_URL", "\"https://novice-c3abd.firebaseapp.com/candyapp.apk\""
         }
     }
