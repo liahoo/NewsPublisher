@@ -23,6 +23,7 @@
         <activity android:name=".GameOverActivity"
             android:label="@string/title_game_over_activity"/>
         <activity android:name=".PlayGameActivity" />
+        <activity android:name=".AdsListActivity" />
     </application>
 
 </manifest>

@@ -1,23 +1,20 @@
 package com.appsflyer.support.publisher
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_news.*
 import java.util.*
 
-class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClickSupport.OnItemLongClickListener {
+class AdsListActivity: Activity(), ItemClickSupport.OnItemClickListener, ItemClickSupport.OnItemLongClickListener {
     override fun onItemLongClicked(recyclerView: RecyclerView, position: Int, v: View): Boolean {
         if(recyclerAdapter.getItemViewType(position)==0) return false
         recyclerAdapter.get(position)?.targetUrl?.let {
-            DialogFactory.showLinkText(this@NewsActivity, it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
+            DialogFactory.showLinkText(this@AdsListActivity, it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
         }
         return true
     }
@@ -33,13 +30,14 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
 
     private lateinit var recyclerAdapter: CardRecyclerAdapter<ClickItem>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_news)
+        setContentView(R.layout.activity_ads_list)
         recyclerAdapter = CardRecyclerAdapter()
+        recyclerAdapter.addAll(ClickItems.gameAds + ClickItems.gameAdsRetargeting)
         recyclerView.adapter = recyclerAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        recyclerAdapter.addAll(ClickItems.news)
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(this).setOnItemLongClickListener(this)
     }
 }

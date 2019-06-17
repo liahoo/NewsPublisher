@@ -15,7 +15,9 @@ class PublisherApp: Application() {
         val TAG = PublisherApp::class.java.simpleName
         var gaid: String? = null
         var isLimitAdTrackingEnabled: Boolean = false
-        fun isCandyAppInstalled(context: Context) = isPackageInstalled("com.candyapp.appsflyer", context.packageManager)
+        fun isCandyAppInstalled(context: Context) =
+                isPackageInstalled("com.candyapp.appsflyer", context.packageManager) ||
+                        isPackageInstalled("com.internal.candyapp.appsflyer", context.packageManager)
         fun isPackageInstalled(packageName: String, packageManager: PackageManager): Boolean {
             var found = true
             try {
@@ -29,6 +31,7 @@ class PublisherApp: Application() {
     override fun onCreate() {
         super.onCreate()
         retrieveGaid()
+        ClickItems.init(this)
     }
 
     private fun retrieveGaid() {
