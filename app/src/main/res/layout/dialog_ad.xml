@@ -19,7 +19,6 @@
 
     <Button
         android:id="@+id/btnClose"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:minHeight="60dp"
         android:layout_margin="20dp"
         android:layout_width="match_parent"

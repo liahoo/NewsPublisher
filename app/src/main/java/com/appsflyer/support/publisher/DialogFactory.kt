@@ -22,12 +22,11 @@ object DialogFactory {
             dialog.dismiss()
         }.setPositiveButton(android.R.string.copy) { dialog, _ ->
             val manager: ClipboardManager = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-            manager.primaryClip = ClipData.newPlainText("url", linkText)
+            manager.setPrimaryClip(ClipData.newPlainText("url", linkText))
             // Show a message:
             Toast.makeText(context, "Text copied",
                     Toast.LENGTH_SHORT)
                     .show()
-
         }.create().show()
     }
 }

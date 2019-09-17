@@ -5,11 +5,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.appsflyer.support.newspublisher"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 29
     }
     flavorDimensions("App")
     productFlavors {
@@ -18,14 +18,12 @@ android {
             applicationId "com.appsflyer.support.publisher.news"
             versionCode 10
             versionName "0.1.0"
-            buildConfigField "String", "DOWNLOAD_URL", "\"https://novice-c3abd.firebaseapp.com/candyapp.apk\""
         }
         GamePublisher {
             dimension "App"
             applicationId "com.appsflyer.support.publisher.game"
             versionCode 10
             versionName "0.1.0"
-            buildConfigField "String", "DOWNLOAD_URL", "\"https://novice-c3abd.firebaseapp.com/candyapp.apk\""
         }
     }
     buildTypes {
@@ -40,9 +38,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.google.android.gms:play-services:12.0.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.gms:play-services-ads:18.2.0'
     implementation 'com.android.volley:volley:1.1.0'
 }
 
