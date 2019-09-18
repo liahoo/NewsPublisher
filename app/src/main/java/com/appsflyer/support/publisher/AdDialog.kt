@@ -1,6 +1,5 @@
 package com.appsflyer.support.publisher
 
-import android.app.AlertDialog
 import android.app.DialogFragment
 import android.content.Intent
 import android.net.Uri
@@ -15,18 +14,17 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import java.net.URLEncoder
 import java.util.*
 
 class AdDialog: DialogFragment() {
     val TAG = AdDialog::class.java.simpleName
     private lateinit var ad: ClickItem
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val itemList = if(PublisherApp.isCandyAppInstalled(activity)) ClickItems.gameAdsRetargeting else ClickItems.gameAds
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val itemList = if(PublisherApp.isCandyAppInstalled(inflater.context)) ClickItems.gameAdsRetargeting else ClickItems.gameAds
         val itemIndex = Random().nextInt(itemList.size)
         Log.d(TAG, "[onCreateView] item index: ${itemIndex}")
         ad =  itemList.get(itemIndex)
-        val v = inflater!!.inflate(R.layout.dialog_ad, container, false)
+        val v = inflater.inflate(R.layout.dialog_ad, container, false)
         val tvTitle: TextView? = v.findViewById(R.id.textAd)
         tvTitle?.let {
             it.setCompoundDrawablesWithIntrinsicBounds(0,0,0, ad.image ?: 0)
@@ -39,7 +37,7 @@ class AdDialog: DialogFragment() {
             }
             it.setOnLongClickListener {
                 ad.targetUrl?.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid)?.let {
-                    DialogFactory.showLinkText(activity, it)
+                    DialogFactory.showLinkText(inflater.context, it)
                     true
                 } ?: false
             }
@@ -47,10 +45,10 @@ class AdDialog: DialogFragment() {
         return v
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val btnClose: Button? = view?.findViewById(R.id.btnClose)
-        btnClose?.setOnClickListener { dismiss(); activity.finish(); }
+        val btnClose: Button? = view.findViewById(R.id.btnClose)
+        btnClose?.setOnClickListener { dismiss(); activity.finish() }
         sendImpression()
     }
 

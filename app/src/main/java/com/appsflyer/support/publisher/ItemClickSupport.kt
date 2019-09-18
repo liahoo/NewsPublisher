@@ -2,7 +2,6 @@ package com.appsflyer.support.publisher
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
-import android.view.View.OnLongClickListener
 
 
 class ItemClickSupport

@@ -1,7 +1,6 @@
 package com.appsflyer.support.publisher
 
 import android.graphics.Color
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import android.view.Gravity
 import android.view.LayoutInflater

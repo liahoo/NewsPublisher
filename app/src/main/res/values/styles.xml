@@ -7,11 +7,15 @@
         <item name="android:colorPrimaryDark">#187BC4</item>
         <item name="android:colorAccent">#77A41E</item>
         <item name="android:colorButtonNormal">#77A41E</item>
-
+        <item name="android:textAppearanceButton">@style/TextAppearance.Button</item>
     </style>
 
     <style name="AppTheme.FullScreen">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="android:TextAppearance.Material.Widget.Button">
+        <item name="android:textColor">#fff</item>
     </style>
 </resources>

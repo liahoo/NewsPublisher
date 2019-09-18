@@ -22,7 +22,7 @@ class PublisherApp: Application() {
             var found = true
             try {
                 packageManager.getPackageInfo(packageName, 0)
-            } catch (e: PackageManager.NameNotFoundException) {
+            } catch (e: Exception) {
                 found = false
             }
             return found

@@ -13,7 +13,7 @@ abstract class SplashActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        timerHandler = Handler(Handler.Callback({
+        timerHandler = Handler(Handler.Callback {
             PublisherApp.gaid?.let {
                 gotoMainActivity()
             } ?: kotlin.run {
@@ -24,7 +24,7 @@ abstract class SplashActivity: Activity() {
                 }
             }
             return@Callback true
-        }))
+        })
         timerHandler.sendEmptyMessageDelayed(count, 200)
     }
 
@@ -36,9 +36,9 @@ abstract class SplashActivity: Activity() {
     private fun alertNoGaid() {
         AlertDialog.Builder(this)
                 .setMessage(R.string.can_not_read_gaid)
-                .setPositiveButton(android.R.string.ok, { dialog, _ ->
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
                     dialog.dismiss()
-                })
+                }
                 .create().show()
     }
 }
