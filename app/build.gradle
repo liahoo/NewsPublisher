@@ -15,15 +15,15 @@ android {
     productFlavors {
         NewsPublisher {
             dimension "App"
-            applicationId "com.appsflyer.support.publisher.news"
-            versionCode 10
-            versionName "0.1.0"
+            applicationId "com.appsflyer.masterclass.publisher.news"
+            versionCode 11
+            versionName "0.1"
         }
         GamePublisher {
             dimension "App"
-            applicationId "com.appsflyer.support.publisher.game"
-            versionCode 10
-            versionName "0.1.0"
+            applicationId "com.appsflyer.masterclass.publisher.game"
+            versionCode 11
+            versionName "0.1"
         }
     }
     buildTypes {
