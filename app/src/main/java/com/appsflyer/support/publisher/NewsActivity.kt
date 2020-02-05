@@ -14,7 +14,8 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
     override fun onItemLongClicked(recyclerView: RecyclerView, position: Int, v: View): Boolean {
         if(recyclerAdapter.getItemViewType(position)==0) return false
         recyclerAdapter.get(position)?.targetUrl?.let {
-            DialogFactory.showLinkText(this@NewsActivity, it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
+            DialogFactory.showLinkText(this@NewsActivity,
+                    it.replace("{adid}", GaidHelper.gaid ?: "").replace("{epoch-time-adid}",(Date().time).toString() + "-" + GaidHelper.gaid))
         }
         return true
     }
@@ -23,7 +24,7 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
         if(recyclerAdapter.getItemViewType(position)==0) return
         recyclerAdapter.get(position)?.targetUrl?.let {
             startActivity(Intent(Intent.ACTION_VIEW,
-                    Uri.parse(it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
+                    Uri.parse(it.replace("{adid}", GaidHelper.gaid ?: "").replace("{epoch-time-adid}",(Date().time).toString() + "-" + GaidHelper.gaid))
             ))
         }
     }
@@ -38,5 +39,10 @@ class NewsActivity : Activity(), ItemClickSupport.OnItemClickListener, ItemClick
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerAdapter.addAll(ClickItems.news)
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(this).setOnItemLongClickListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        GaidHelper.retrieveGaid(this.applicationContext)
     }
 }

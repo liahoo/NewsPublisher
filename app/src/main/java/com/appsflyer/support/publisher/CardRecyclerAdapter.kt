@@ -3,7 +3,7 @@ package com.appsflyer.support.publisher
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 
-class CardRecyclerAdapter<CardItem: CardBindable>() : RecyclerView.Adapter<CardViewHolder>() {
+class CardRecyclerAdapter<CardItem: CardBindable> : RecyclerView.Adapter<CardViewHolder>() {
 
     private var list: MutableList<CardItem> = mutableListOf()
     override fun getItemCount(): Int {

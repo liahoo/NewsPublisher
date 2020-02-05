@@ -14,5 +14,9 @@ class GameOverActivity: Activity() {
             }
         }
     }
+    override fun onResume() {
+        super.onResume()
+        GaidHelper.retrieveGaid(this.applicationContext)
+    }
 
 }

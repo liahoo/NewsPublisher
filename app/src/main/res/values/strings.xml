@@ -2,6 +2,7 @@
     <string name="app_name">News Publisher</string>
     <string name="headline_no">A theory claims all Skittles taste the same so we did a blind test - Are you really tasting the rainbow?</string>
     <string name="can_not_read_gaid">Oops, I can\'t read GAID from this device!</string>
+    <string name="it_is_lat">You have turned on Limited Ad Tracking!</string>
     <string name="play_game">Play Game</string>
     <string name="game_over">Game Over</string>
     <string name="title_news_activity">World News</string>
@@ -16,4 +17,5 @@
     <string name="article_text_7">Intricate, beautiful sugar cubes could be the key to getting 3D</string>
     <string name="close">Close</string>
     <string name="list_all">List All Ads</string>
+    <string name="input_package_name">Input package name</string>
 </resources>

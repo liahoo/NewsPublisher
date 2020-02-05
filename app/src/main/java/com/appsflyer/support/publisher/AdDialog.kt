@@ -30,13 +30,13 @@ class AdDialog: DialogFragment() {
             it.setCompoundDrawablesWithIntrinsicBounds(0,0,0, ad.image ?: 0)
             it.text = ad.text
             it.setOnClickListener {
-                ad.targetUrl?.replace("{epoch-time-adid}", (Date().time).toString() + "-" + PublisherApp.gaid)?.let {
+                ad.targetUrl?.replace("{adid}", GaidHelper.gaid ?: "")?.replace("{epoch-time-adid}", (Date().time).toString() + "-" + GaidHelper.gaid)?.let {
                     Log.i(TAG,"click on url: $it")
                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
                 }
             }
             it.setOnLongClickListener {
-                ad.targetUrl?.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid)?.let {
+                ad.targetUrl?.replace("{adid}", GaidHelper.gaid ?: "")?.replace("{epoch-time-adid}",(Date().time).toString() + "-" + GaidHelper.gaid)?.let {
                     DialogFactory.showLinkText(inflater.context, it)
                     true
                 } ?: false
@@ -54,7 +54,7 @@ class AdDialog: DialogFragment() {
 
     private fun sendImpression() {
         Log.d(TAG, "[sendImpression]")
-        val url = ad.impressUrl?.replace("{epoch-time-adid}", (Date().time).toString() + "-" + PublisherApp.gaid)
+        val url = ad.impressUrl?.replace("{adid}", GaidHelper.gaid ?: "")?.replace("{epoch-time-adid}", (Date().time).toString() + "-" + GaidHelper.gaid)
 
         Log.i(TAG,"Request:\n $url")
         val queue = Volley.newRequestQueue(activity)

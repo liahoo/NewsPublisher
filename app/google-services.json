@@ -21,7 +21,36 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCGsc0Xy5FnSDJ-P43N1eJrGfP0HAIsOSY"
+          "current_key": "AIzaSyA_5m5nTzosCwBOXtZk0i_TBLk8N2F_EvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "440160723449-cchtovornv7r6t74bsdqh1fkrv98q337.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440160723449:android:11ccfb307d5383f71edd28",
+        "android_client_info": {
+          "package_name": "com.appsflyer.masterclass.publisher.clickfarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440160723449-cchtovornv7r6t74bsdqh1fkrv98q337.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_5m5nTzosCwBOXtZk0i_TBLk8N2F_EvM"
         }
       ],
       "services": {
@@ -50,7 +79,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCGsc0Xy5FnSDJ-P43N1eJrGfP0HAIsOSY"
+          "current_key": "AIzaSyA_5m5nTzosCwBOXtZk0i_TBLk8N2F_EvM"
         }
       ],
       "services": {
@@ -79,7 +108,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCGsc0Xy5FnSDJ-P43N1eJrGfP0HAIsOSY"
+          "current_key": "AIzaSyA_5m5nTzosCwBOXtZk0i_TBLk8N2F_EvM"
         }
       ],
       "services": {
@@ -108,7 +137,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCGsc0Xy5FnSDJ-P43N1eJrGfP0HAIsOSY"
+          "current_key": "AIzaSyA_5m5nTzosCwBOXtZk0i_TBLk8N2F_EvM"
         }
       ],
       "services": {
@@ -137,7 +166,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCGsc0Xy5FnSDJ-P43N1eJrGfP0HAIsOSY"
+          "current_key": "AIzaSyA_5m5nTzosCwBOXtZk0i_TBLk8N2F_EvM"
         }
       ],
       "services": {
@@ -174,7 +203,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCGsc0Xy5FnSDJ-P43N1eJrGfP0HAIsOSY"
+          "current_key": "AIzaSyA_5m5nTzosCwBOXtZk0i_TBLk8N2F_EvM"
         }
       ],
       "services": {

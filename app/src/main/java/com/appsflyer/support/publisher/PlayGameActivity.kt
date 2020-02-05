@@ -10,6 +10,6 @@ class PlayGameActivity: Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play_game)
         btnPlay.setOnClickListener { startActivity(Intent(this, GameOverActivity::class.java)) }
-        btnListAll.setOnClickListener { startActivity(Intent(this, AdsListActivity::class.java)) }
+//        btnListAll.setOnClickListener { startActivity(Intent(this, AdsListActivity::class.java)) }
     }
 }

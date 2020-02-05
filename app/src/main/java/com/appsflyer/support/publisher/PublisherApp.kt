@@ -8,13 +8,9 @@ import java.util.concurrent.Executors
 import android.content.pm.PackageManager
 
 
-
-
 class PublisherApp: Application() {
     companion object {
         val TAG = PublisherApp::class.java.simpleName
-        var gaid: String? = null
-        var isLimitAdTrackingEnabled: Boolean = false
         fun isCandyAppInstalled(context: Context) =
                 isPackageInstalled("com.candyapp.appsflyer", context.packageManager) ||
                         isPackageInstalled("com.internal.candyapp.appsflyer", context.packageManager)
@@ -30,30 +26,7 @@ class PublisherApp: Application() {
     }
     override fun onCreate() {
         super.onCreate()
-        retrieveGaid()
+        GaidHelper.retrieveGaid(this)
         ClickItems.init(this)
-    }
-
-    private fun retrieveGaid() {
-        gaid = retrieveCachedGaid()
-        Executors.newSingleThreadExecutor().execute {
-            try {
-                AdvertisingIdClient.getAdvertisingIdInfo(applicationContext)?.let {
-                    Log.i(TAG, "Get GAID={${it.id}}, isLimitAdTrackingEnabled:${it.isLimitAdTrackingEnabled}")
-                    gaid=it.id
-                    isLimitAdTrackingEnabled = it.isLimitAdTrackingEnabled
-                    restoreGaid(gaid)
-                } ?: Log.e(TAG, "Get Advertising ID info failed!")
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    private fun restoreGaid(gaid: String?) {
-        getSharedPreferences("AdInfo", Context.MODE_PRIVATE).edit().putString("GAID", gaid).apply()
-    }
-    private fun retrieveCachedGaid(): String?{
-        return getSharedPreferences("AdInfo", Context.MODE_PRIVATE).getString("GAID", null)
     }
 }

@@ -14,7 +14,7 @@ class AdsListActivity: Activity(), ItemClickSupport.OnItemClickListener, ItemCli
     override fun onItemLongClicked(recyclerView: RecyclerView, position: Int, v: View): Boolean {
         if(recyclerAdapter.getItemViewType(position)==0) return false
         recyclerAdapter.get(position)?.targetUrl?.let {
-            DialogFactory.showLinkText(this@AdsListActivity, it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
+            DialogFactory.showLinkText(this@AdsListActivity, it.replace("{adid}", GaidHelper.gaid ?: "").replace("{epoch-time-adid}",(Date().time).toString() + "-" + GaidHelper.gaid))
         }
         return true
     }
@@ -23,7 +23,7 @@ class AdsListActivity: Activity(), ItemClickSupport.OnItemClickListener, ItemCli
         if(recyclerAdapter.getItemViewType(position)==0) return
         recyclerAdapter.get(position)?.targetUrl?.let {
             startActivity(Intent(Intent.ACTION_VIEW,
-                    Uri.parse(it.replace("{epoch-time-adid}",(Date().time).toString() + "-" + PublisherApp.gaid))
+                    Uri.parse(it.replace("{adid}", GaidHelper.gaid ?: "").replace("{epoch-time-adid}",(Date().time).toString() + "-" + GaidHelper.gaid))
             ))
         }
     }
@@ -40,4 +40,9 @@ class AdsListActivity: Activity(), ItemClickSupport.OnItemClickListener, ItemCli
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(this).setOnItemLongClickListener(this)
     }
+    override fun onResume() {
+        super.onResume()
+        GaidHelper.retrieveGaid(this.applicationContext)
+    }
+
 }
