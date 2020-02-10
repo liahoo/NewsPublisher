@@ -16,6 +16,28 @@
     <string name="article_text_6">Cheers! World\'s first beer-flavoured bean set for UK release</string>
     <string name="article_text_7">Intricate, beautiful sugar cubes could be the key to getting 3D</string>
     <string name="close">Close</string>
-    <string name="list_all">List All Ads</string>
+    <string name="list_all">List All ADs</string>
     <string name="input_package_name">Input package name</string>
+    <string name="inapp_ads">In-App ADs</string>
+    <string name="inapp_webview">WebView ADs</string>
+    <string name="inapp_webview_fascode">WebView ADs(fascode_int)</string>
+    <string name="open_browser">Open Browser</string>
+    <string name="open_browser_fascode">Open Browser(fascode_int)</string>
+    <string name="inapp_ads_via_onelink">In-App ADs via OneLink</string>
+    <string name="webview_ads_via_onelink">WebView ADs via OneLink</string>
+    <string name="browser_ads_via_onelink">Browser ADs via OneLink</string>
+    <string name="inapp_ads_via_brandedlink">In-App ADs via Branded Link</string>
+    <string name="webview_ads_via_brandedlink">WebView ADs via Branded Link</string>
+    <string name="browser_ads_via_brandedlink">Browser ADs via Branded Link</string>
+    <string name="subdomain">SubDomain</string>
+    <string name="path">Path</string>
+    <string name="add_param">Add Param</string>
+    <string name="create">Create</string>
+    <string name="url">URL</string>
+    <string name="click_url">Click URL</string>
+    <string name="inapp_ads_fascode">In-App Ads(fascode_int)</string>
+    <string name="input_pid">Input pid (e.g. fascode_int)</string>
+    <string name="input_url">Input url (for Branded Links)</string>
+
+
 </resources>

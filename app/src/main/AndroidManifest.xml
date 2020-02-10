@@ -29,6 +29,7 @@
         <activity android:name=".AdsListActivity" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".ClickFarmActivity" />
+        <activity android:name=".InAppAdsActivity" />
     </application>
 
 </manifest>

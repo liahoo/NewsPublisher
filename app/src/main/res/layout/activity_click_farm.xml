@@ -1,48 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="20dp">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center">
     <EditText
+        android:layout_marginTop="20dp"
         android:id="@+id/editPackageName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/input_package_name"
         />
 
-    <Button
-        android:id="@+id/btnInternal"
+    <EditText
+        android:id="@+id/editPid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="60dp"
-        android:text="Internal WebView"
-        android:textAllCaps="false">
+        android:hint="@string/input_pid"
+        />
 
+    <Button
+        android:id="@+id/btnInternalAds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="@string/inapp_ads"
+        android:textAllCaps="false">
+    </Button>
+    <Button
+        android:id="@+id/btnInternalWebView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="@string/inapp_webview"
+        android:textAllCaps="false">
     </Button>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="60dp"
-        android:text="Internal WebView(fascode_int)"
+        android:text="@string/open_browser"
         android:textAllCaps="false"
-        android:id="@+id/btnInternalFascode">
+        android:id="@+id/btnBrowser">
     </Button>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="https://"
+            />
+        <EditText
+            android:id="@+id/editSubDomain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/subdomain"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=".onelink.me/"
+            />
+        <EditText
+            android:id="@+id/editPath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/path"
+            />
+    </LinearLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="60dp"
-        android:text="External Browser"
+        android:text="@string/inapp_ads_via_onelink"
         android:textAllCaps="false"
-        android:id="@+id/btnExternal">
+        android:id="@+id/btnOneLinkInAppAds">
     </Button>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="60dp"
-        android:text="External Browser(fascode_int)"
+        android:text="@string/webview_ads_via_onelink"
         android:textAllCaps="false"
-        android:id="@+id/btnExternalFascode">
+        android:id="@+id/btnOneLinkWebView">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="@string/browser_ads_via_onelink"
+        android:textAllCaps="false"
+        android:id="@+id/btnOneLinkBrowser">
+    </Button>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/editBrandedLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/input_url"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="@string/inapp_ads_via_brandedlink"
+        android:textAllCaps="false"
+        android:id="@+id/btnBrandedLinkInAppAds">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="@string/webview_ads_via_brandedlink"
+        android:textAllCaps="false"
+        android:id="@+id/btnBrandedLinkWebView">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:text="@string/browser_ads_via_brandedlink"
+        android:textAllCaps="false"
+        android:id="@+id/btnBrandedLinkBrowser">
     </Button>
 
 </LinearLayout>
+</ScrollView>

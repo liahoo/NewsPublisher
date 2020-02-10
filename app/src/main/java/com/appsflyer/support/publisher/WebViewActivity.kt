@@ -2,8 +2,10 @@ package com.appsflyer.support.publisher
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.webkit.URLUtil
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.activity_webview.*
@@ -30,19 +32,31 @@ class WebViewActivity: Activity() {
 //        webView.settings.domStorageEnabled = true
         webView.settings.javaScriptCanOpenWindowsAutomatically = true
         webView.loadUrl(intent.getStringExtra(EXTRA_URL) ?: defaultUrl)
+        textViewBack.setOnClickListener {
+            webView.goBack()
+        }
+        textViewNext.setOnClickListener {
+            webView.goForward()
+        }
     }
 
     val myWebViewClient = object: WebViewClient() {
         override fun shouldOverrideUrlLoading(webView: WebView, url: String): Boolean {
             Log.i("MyWebViewClient", "[shouldOverrideUrlLoading] url=\n$url")
+            if(URLUtil.isNetworkUrl(url)) {
+                return false;
+            }
             if (url.startsWith("intent://")) {
                 val intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
                 if (intent != null) {
                     startActivity(intent)
                     return true
                 }
+            } else {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                startActivity(intent)
             }
-            return false
+            return true
         }
     }
 }
