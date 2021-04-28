@@ -40,7 +40,7 @@ class WebViewActivity: Activity() {
         }
     }
 
-    val myWebViewClient = object: WebViewClient() {
+    private val myWebViewClient = object: WebViewClient() {
         override fun shouldOverrideUrlLoading(webView: WebView, url: String): Boolean {
             Log.i("MyWebViewClient", "[shouldOverrideUrlLoading] url=\n$url")
             if(URLUtil.isNetworkUrl(url)) {
